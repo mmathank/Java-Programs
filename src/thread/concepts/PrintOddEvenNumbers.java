@@ -1,58 +1,45 @@
 package core.java.thread.concepts;
 
+import java.util.stream.IntStream;
+
 public class PrintOddEvenNumbers {
 
-	public static void printOddNumbers() {
-		for (int i = 1; i <= 10; i++) {
-			if (i % 2 != 0)
-				System.out.println(i);
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+    public static void main(String[] args) {
+        System.out.println("Main Thread Started");
+        PrintOddEvenNumbers poe = new PrintOddEvenNumbers();
 
-	public static void printEvenNumbers() {
-		for (int i = 1; i <= 10; i++) {
-			if (i % 2 == 0)
-				System.out.println(i);
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+        Thread t1 = new Thread(() -> {
+            poe.printOddNumbers();
+        });
 
-	public static void main(String[] args) {
+        Thread t2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                poe.printEvenNumbers();
+            }
+        });
 
-		System.out.println("Main Thread Started");
+        t1.start();
+        t2.start();
 
-		Thread t1 = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				printOddNumbers();
-			}
-		});
+        try {
+            t2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-		Thread t2 = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				printEvenNumbers();
-			}
-		});
+        System.out.println("Main Thread Completed..");
+    }
 
-		t1.start();
-		t2.start();
+    public synchronized void printOddNumbers() {
+        IntStream.rangeClosed(1, 50)
+                 .filter(x -> x % 2 != 0)
+                 .forEach(System.out::println);
+    }
 
-		try {
-			t1.join();
-			t2.join();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		System.out.println("Main Thread Completed..");
-	}
+    public synchronized void printEvenNumbers() {
+        IntStream.rangeClosed(1, 50)
+                 .filter(x -> x % 2 == 0)
+                 .forEach(System.out::println);
+    }
 }
