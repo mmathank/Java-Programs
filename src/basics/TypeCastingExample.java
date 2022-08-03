@@ -23,17 +23,16 @@ public class TypeCastingExample {
 	System.out.println("intVar3: " + intVar3);
 	
 //	overflow
-	byte byteVar4 = (byte) 129;
+	byte byteVar4 = (byte) -129;
 	System.out.println("byteVar4: " + byteVar4);
 	
 //	Auto casting in Expressions
 	byte a = 100;
 	byte b = 28;
-	int c = a + b;
+	int c =  (a + b);
 	long e = 200;
 	long d = c * e;
 	System.out.println("c: " + c);
 	System.out.println("d: " + d);
-	
 	}
 }
