@@ -6,7 +6,7 @@ public class ArrayExample {
 
 	public static void main(String[] args) {
 
-		int[] arrOfNum = new int[3];
+		int[] arrOfNum = new int[3] ;
 		arrOfNum[0] = 30;
 		arrOfNum[1] = 10;
 		arrOfNum[2] = 20;
