@@ -31,5 +31,8 @@ public class AnonymousClassExample {
 		};
 		
 		dvdPlayer.play();
+
+		Playable blueray = () -> {System.out.println();
+		};
 	}
 }

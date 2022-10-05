@@ -38,6 +38,7 @@ public class StreamExample {
 				.peek(student -> System.out.println("After 1st Filter: " + student)).filter(byIdAndSports)
 				.peek(student -> System.out.println("After 2nd Filter: " + student))
 				.collect(toMap(Student::getName, Student::getActivities));
+		
 
 		studentMap2.forEach((name, activity) -> System.out.println("Name: " + name + ", Activity: " + activity));
 	}
