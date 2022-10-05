@@ -15,10 +15,10 @@ public class ArrayListExample {
 		numberList.add(3,20);
 		
 //		numberList.remove(10);
-//		numberList.remove((Object) 10);
-		
-//		IndexOutOfBoundsException
-//		numberList.add(3,20);
+//	numberList.remove((Object) 10);
+
+// 	IndexOutOfBoundsException
+//	numberList.add(3,20);
 		
 		System.out.println(numberList);
 	}

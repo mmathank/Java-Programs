@@ -1,5 +1,7 @@
 package core.java.collection.concepts;
 
+import core.java.advance.domain.Student;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -10,15 +12,6 @@ class SortById implements Comparator<ComparatorStudent> {
 	@Override
 	public int compare(ComparatorStudent o1, ComparatorStudent o2) {
 		return o1.id - o2.id;
-	}
-
-}
-
-class SortByName implements Comparator<ComparatorStudent> {
-
-	@Override
-	public int compare(ComparatorStudent o1, ComparatorStudent o2) {
-		return o1.name.compareTo(o2.name);
 	}
 
 }
@@ -71,7 +64,7 @@ public class ComparatorStudent {
 		studentList.forEach(System.out::println);
 		
 		System.out.println("\nSort By Name");
-		Collections.sort(studentList,new SortByName());
+		Collections.sort(studentList, Comparator.comparing(ComparatorStudent::getName));
 		studentList.forEach(System.out::println);
 	}
 }
