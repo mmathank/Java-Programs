@@ -1,5 +1,6 @@
 package core.java.basics;
 
+
 import java.util.*;
 
 public class Misc {

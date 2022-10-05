@@ -12,8 +12,11 @@ public class DeadlockExample {
                 synchronized (resource1) {
                     System.out.println("Thread-1 is running");
                     System.out.println("Thread-1 is waiting for resource 2");
+
                     synchronized (resource2) {
                         System.out.println("Resource 2 acquired - No DeadLock - Thread-1 Completed");
+
+
                     }
                 }
             }
@@ -24,8 +27,11 @@ public class DeadlockExample {
                 synchronized (resource2) {
                     System.out.println("Thread-2 is running");
                     System.out.println("Thread-2 is waiting for resource 1");
+
                     synchronized (resource1) {
                         System.out.println("Resource 1 acquired - No DeadLock - Thread-2 Completed");
+
+
                     }
                 }
             }
